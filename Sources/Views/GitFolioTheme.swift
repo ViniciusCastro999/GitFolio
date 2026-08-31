@@ -11,6 +11,7 @@ enum GitFolioTheme {
         endPoint: .bottomTrailing
     )
 
+    static let navigationBar = Color(red: 0.04, green: 0.06, blue: 0.10)
     static let accent = Color(red: 0.24, green: 0.88, blue: 0.78)
     static let secondaryAccent = Color(red: 0.62, green: 0.74, blue: 1.00)
     static let cardStroke = Color.white.opacity(0.12)
@@ -42,6 +43,13 @@ extension View {
             GitFolioTheme.background
                 .ignoresSafeArea()
         }
+        .preferredColorScheme(.dark)
+    }
+
+    func gitFolioNavigationBar() -> some View {
+        toolbarColorScheme(.dark, for: .navigationBar)
+            .toolbarBackground(GitFolioTheme.navigationBar, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
     }
 }
 

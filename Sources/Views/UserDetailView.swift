@@ -8,6 +8,7 @@ struct UserDetailView: View {
     @Environment(\.modelContext) private var modelContext
     @State private var viewModel: UserDetailViewModel?
     @State private var favoritesViewModel: FavoritesViewModel?
+    @State private var isFavorite = false
 
     var body: some View {
         Group {
@@ -19,7 +20,7 @@ struct UserDetailView: View {
             }
         }
         .gitFolioBackground()
-        .toolbarColorScheme(.dark, for: .navigationBar)
+        .gitFolioNavigationBar()
         .task {
             if viewModel == nil {
                 let vm = UserDetailViewModel(login: login, service: gitHubService)
@@ -98,13 +99,19 @@ struct UserDetailView: View {
             .listStyle(.plain)
             .scrollContentBackground(.hidden)
             .navigationTitle(profile.login)
+            .onAppear {
+                isFavorite = favoritesViewModel?.isFavorite(login: profile.login) ?? false
+            }
             .toolbar {
                 if let favoritesViewModel {
                     Button {
-                        favoritesViewModel.toggleFavorite(profile: profile)
+                        withAnimation(.spring(response: 0.28, dampingFraction: 0.72)) {
+                            isFavorite = favoritesViewModel.toggleFavorite(profile: profile)
+                        }
                     } label: {
-                        Image(systemName: favoritesViewModel.isFavorite(login: profile.login) ? "star.fill" : "star")
-                            .foregroundStyle(GitFolioTheme.accent)
+                        Image(systemName: isFavorite ? "star.fill" : "star")
+                            .symbolEffect(.bounce, value: isFavorite)
+                            .foregroundStyle(isFavorite ? .yellow : GitFolioTheme.accent)
                     }
                 }
             }

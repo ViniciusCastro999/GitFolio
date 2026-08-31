@@ -16,7 +16,7 @@ struct SearchView: View {
             }
             .gitFolioBackground()
             .navigationTitle("GitFolio")
-            .toolbarColorScheme(.dark, for: .navigationBar)
+            .gitFolioNavigationBar()
             .searchable(
                 text: Binding(
                     get: { viewModel?.query ?? "" },

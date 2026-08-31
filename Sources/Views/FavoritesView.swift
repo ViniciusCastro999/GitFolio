@@ -31,7 +31,7 @@ struct FavoritesView: View {
             }
             .gitFolioBackground()
             .navigationTitle("Favoritos")
-            .toolbarColorScheme(.dark, for: .navigationBar)
+            .gitFolioNavigationBar()
         }
     }
 

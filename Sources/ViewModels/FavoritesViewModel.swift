@@ -18,11 +18,14 @@ final class FavoritesViewModel {
         return ((try? modelContext.fetchCount(descriptor)) ?? 0) > 0
     }
 
-    func toggleFavorite(profile: GitHubUserProfile) {
+    @discardableResult
+    func toggleFavorite(profile: GitHubUserProfile) -> Bool {
         let login = profile.login
         let descriptor = FetchDescriptor<FavoriteUser>(predicate: #Predicate { $0.login == login })
         if let existing = try? modelContext.fetch(descriptor).first {
             modelContext.delete(existing)
+            try? modelContext.save()
+            return false
         } else {
             let favorite = FavoriteUser(
                 login: profile.login,
@@ -30,8 +33,9 @@ final class FavoritesViewModel {
                 htmlURLString: profile.htmlURL.absoluteString
             )
             modelContext.insert(favorite)
+            try? modelContext.save()
+            return true
         }
-        try? modelContext.save()
     }
 
     func remove(_ favorite: FavoriteUser) {
