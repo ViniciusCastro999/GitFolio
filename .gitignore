@@ -1,0 +1,28 @@
+# Xcode
+build/
+DerivedData/
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+*.xcworkspace/*
+!*.xcworkspace/contents.xcworkspacedata
+.swiftpm/
+xcuserdata/
+*.moved-aside
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+
+# Swift Package Manager
+.build/
+Packages/
+
+# CocoaPods (not used, but ignored just in case)
+Pods/
+
+# macOS
+.DS_Store
+
+# XcodeGen output (regenerated with `xcodegen generate`)
+GitFolio.xcodeproj/
