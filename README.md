@@ -2,6 +2,14 @@
 
 Um app iOS nativo, escrito em **Swift + SwiftUI**, para buscar desenvolvedores no GitHub, ver seus perfis e repositórios, e favoritá-los localmente. Feito como projeto de portfólio com foco em **Swift Concurrency (`async`/`await`)** usada de forma idiomática, não decorativa.
 
+## 📱 Screenshots
+
+<img width="300" height="652" alt="image" src="https://github.com/user-attachments/assets/c155ad0c-4d1e-4747-8e96-bb218b8f2c35" />
+<img width="300" height="652" alt="image" src="https://github.com/user-attachments/assets/12c2d0f2-0feb-4ed3-8101-6a602580372b" />
+<img width="300" height="652" alt="image" src="https://github.com/user-attachments/assets/7671260f-6139-4fd8-8c9c-cd5be64f730e" />
+<img width="300" height="652" alt="image" src="https://github.com/user-attachments/assets/a350f815-79d5-42b7-bb5e-e1fe8eeeb1c4" />
+
+
 ## ✨ Funcionalidades
 
 - Busca de usuários do GitHub com **debounce** (sem disparar uma request a cada tecla)
